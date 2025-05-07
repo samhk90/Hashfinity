@@ -1,0 +1,118 @@
+/* Base container styles */
+.content {
+  padding-top: 4rem;
+}
+
+/* Header Transitions */
+:host {
+    display: block;
+  }
+  
+  header {
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease-in-out;
+  }
+  
+  .glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+  }
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 50;
+    transition: all 0.3s ease;
+    background: transparent;
+  }
+  
+  .header.scrolled {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  }
+  
+  .dark .header.scrolled {
+    background: rgba(17, 24, 39, 0.8);
+  }
+  
+  /* Mobile menu enhanced blur effect */
+  .mobile-menu {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .dark .mobile-menu {
+    background: rgba(17, 24, 39, 0.1);
+  }
+  
+  .nav-link {
+    transition: color 0.2s ease;
+  }
+  
+  .nav-link:hover {
+    color: #3b82f6;
+  }
+
+/* Navigation links hover effect */
+nav a {
+  position: relative;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: #3B82F6;
+  transition: width 0.3s ease-in-out;
+}
+
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Mobile menu animations */
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 200ms, transform 200ms;
+}
+
+/* Theme toggle button styles */
+button {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Responsive container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 640px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Dark mode adjustments */
+@media (prefers-color-scheme: dark) {
+  nav a::after {
+    background: #60A5FA;
+  }
+}
