@@ -50,7 +50,7 @@
 
         <!-- Mobile Menu -->
         <div *ngIf="isMenuOpen" 
-             class="md:hidden mt-4 pb-4 space-y-4">
+             class="md:hidden mt-4 pb-4 space-y-4 fixed top-16 left-0 right-0 bg-white/10 dark:bg-gray-900/10 backdrop-blur-lg p-6 border-t border-gray-200/20">
             <a routerLink="/" 
                routerLinkActive="text-blue-600"
                [routerLinkActiveOptions]="{exact: true}"
@@ -64,6 +64,14 @@
                routerLinkActive="text-blue-600"
                [ngClass]="{'text-gray-800': isScrolled, 'text-white': !isScrolled}"
                class="block transition-colors duration-300 hover:text-blue-600">Contact</a>
+            <button (click)="toggleTheme()"
+                    [ngClass]="{'text-gray-800': isScrolled, 'text-white': !isScrolled}"
+                    class="w-full text-left p-2 transition-colors duration-300 hover:text-blue-600 flex items-center gap-2">
+                <span class="transition-transform duration-300" [style.transform]="themeService.isDarkTheme() ? 'rotate(360deg)' : 'rotate(0deg)'">
+                    {{ themeService.isDarkTheme() ? '🌙' : '☀️' }}
+                </span>
+                <span>Toggle Theme</span>
+            </button>
         </div>
     </nav>
 </header>
