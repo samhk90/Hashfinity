@@ -1,13 +1,23 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <title>Hashfinity</title>
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="icon" href="assets/logo1.png" type="image/png">
+  <link rel="shortcut icon" href="assets/logo1.png" type="image/png">
+  
+  <script>
+    // Immediately set initial theme to prevent flash
+    let darkMode = localStorage.getItem('theme') === 'dark' || 
+      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+    }
+  </script>
 </head>
-<body>
+<body class="antialiased">
   <app-root></app-root>
 </body>
 </html>
