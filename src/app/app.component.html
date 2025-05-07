@@ -51,13 +51,13 @@
         <div *ngIf="isMenuOpen" 
              class="md:hidden mt-2 pb-4 space-y-4 fixed top-16 left-0 right-0 bg-white/10 dark:bg-gray-900/10 backdrop-blur-lg p-6 border-t border-gray-200/20">
             <a href="/" 
-               [ngClass]="{'text-gray-800': isScrolled, 'text-white': !isScrolled}"
+               [ngClass]="{'text-gray-800 dark:text-white': isScrolled, 'text-white': !isScrolled}"
                class="block transition-colors font-bold duration-300 hover:text-blue-600">Home</a>
             <a href="/services"
-               [ngClass]="{'text-gray-800': isScrolled, 'text-white': !isScrolled}"
+               [ngClass]="{'text-gray-800 dark:text-white': isScrolled, 'text-white': !isScrolled}"
                class="block transition-colors font-bold hover:text-blue-600">Services</a>
             <a href="/contact"
-               [ngClass]="{'text-gray-800': isScrolled, 'text-white': !isScrolled}"
+               [ngClass]="{'text-gray-800 dark:text-white': isScrolled, 'text-white': !isScrolled}"
                class="block transition-colors font-bold duration-300 hover:text-blue-600">Contact</a>
             <button (click)="toggleTheme()"
                     [ngClass]="{'text-gray-800': isScrolled, 'text-white': !isScrolled}"
