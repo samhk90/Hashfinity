@@ -1,66 +1,60 @@
 <div class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
   <!-- Header section -->
-  <header [ngClass]="{'bg-white/80 dark:bg-gray-900/80': isScrolled, 'bg-transparent': !isScrolled}" 
-          class="fixed top-0 w-full z-50 transition-all duration-300">
-    <div class="container mx-auto px-4 sm:px-6">
-      <div class="flex items-center justify-between h-16">
-        <!-- Logo -->
-        <div class="flex-shrink-0">
-          <a href="/" class="flex items-center">
-            <div class="bg-blue-100 dark:bg-white rounded-full p-2">
-              <img src="assets/logo1.png" alt="Logo" class="h-10 w-11">
+  <header 
+    class="fixed bg-blue-800 top-0 py-1 left-0 right-0 z-50 transition-all duration-300">
+    <nav class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <a routerLink="/" class="flex items-center gap-2 z-50">
+                    <img src="assets/logo1.png" alt="Logo" class="h-10">
+                    <span class="text-2xl text-white  font-extrabold tracking-wider drop-shadow-md" 
+                          style="text-shadow:0 1px 8px rgba(0,0,0,0.25);  padding:0 0.25em; border-radius:0.25em;">
+                        Hashfinity
+                    </span>
+                </a>
             </div>
-            <span [ngClass]="{'text-gray-900 dark:text-white': isScrolled, 'text-white': !isScrolled}" 
-                  class="ml-2 text-xl font-bold transition-colors">Hashfinity</span>
-          </a>
+
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex items-center space-x-8">
+                <a routerLink="/" 
+                   class="transition-colors text-white duration-300 hover:text-cyan-600">Home</a>
+                <a routerLink="/services"
+                   class="transition-colors text-white duration-300 hover:text-blue-600">Services</a>
+                <a routerLink="/contact"
+                   class="transition-colors text-white duration-300 hover:text-blue-600">Contact</a>
+
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button (click)="toggleMenu()" 
+                    [ngClass]="{'text-gray-800': isScrolled, 'text-white': !isScrolled}"
+                    class="md:hidden p-2 rounded-lg hover:bg-gray-100/10 transition-all duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                </svg>
+            </button>
         </div>
 
-        <!-- Desktop Navigation -->
-        <nav class="hidden md:flex space-x-8">
-          <a *ngFor="let item of ['Home', 'Services', 'Contact']"
-             [href]="item === 'Home' ? '/' : '/' + item.toLowerCase()"
-             [ngClass]="{'text-gray-900 dark:text-white': isScrolled, 'text-white': !isScrolled}"
-             class="font-bold hover:text-blue-400 transition-colors">
-            {{item}}
-          </a>
-        </nav>
-
-        <!-- Theme Toggle & Mobile Menu Button -->
-        <div class="flex items-center space-x-4">
-          <button (click)="toggleTheme()" 
-                  [ngClass]="{'text-gray-900 dark:text-white': isScrolled, 'text-white': !isScrolled}"
-                  class="p-2 rounded-lg hover:bg-gray-100/10">
-            <svg *ngIf="!isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
-            </svg>
-            <svg *ngIf="isDarkMode" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707" />
-            </svg>
-          </button>
-          
-          <button (click)="toggleMobileMenu()" 
-                  [ngClass]="{'text-gray-900 dark:text-white': isScrolled, 'text-white': !isScrolled}"
-                  class="md:hidden p-2 rounded-lg hover:bg-gray-100/10">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
-          </button>
+        <!-- Mobile Menu with Animation -->
+        <div [@slideInOut]="isMenuOpen ? 'open' : 'closed'"
+             class="md:hidden fixed top-[5rem] left-0 right-0 overflow-hidden bg-blue-800/95 backdrop-blur-md shadow-lg transition-all duration-300"
+             style="transform-origin: top">
+            <div class="py-4 px-6 space-y-4 border-t border-white/10">
+                <a routerLink="/" 
+                   routerLinkActive="text-blue-400"
+                   [routerLinkActiveOptions]="{exact: true}"
+                   class="block transition-colors duration-300 text-gray-200 hover:text-blue-400">Home</a>
+                <a routerLink="/services"
+                   routerLinkActive="text-blue-400"
+                   class="block transition-colors duration-300 text-gray-200 hover:text-blue-400">Services</a>
+                <a routerLink="/contact"
+                   routerLinkActive="text-blue-400"
+                   class="block transition-colors duration-300 text-gray-200 hover:text-blue-400">Contact</a>
+            </div>
         </div>
-      </div>
-
-      <!-- Mobile menu -->
-      <div *ngIf="isMobileMenuOpen" 
-           class="md:hidden py-4 px-4 mt-2 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm rounded-lg">
-        <div class="flex flex-col space-y-4">
-          <a *ngFor="let item of ['Home', 'Services', 'Contact']"
-             [href]="item === 'Home' ? '/' : '/' + item.toLowerCase()"
-             class="text-gray-900 dark:text-white font-bold hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-            {{item}}
-          </a>
-        </div>
-      </div>
-    </div>
-  </header>
+    </nav>
+</header>
 
   <!-- Main content without padding -->
   <main>

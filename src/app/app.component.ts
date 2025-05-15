@@ -1,14 +1,37 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { trigger, state, style, animate, transition } from '@angular/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule,RouterModule],
+  imports: [RouterOutlet, CommonModule, RouterModule, RouterLink, RouterLinkActive],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  animations: [
+    trigger('slideInOut', [
+      state('closed', style({
+        height: '0',
+        opacity: '0',
+        transform: 'translateY(-10px)'
+      })),
+      state('open', style({
+        height: '*',
+        opacity: '1',
+        transform: 'translateY(0)'
+      })),
+      transition('closed => open', [
+        animate('300ms ease-in-out')
+      ]),
+      transition('open => closed', [
+        animate('250ms ease-in-out')
+      ])
+    ])
+  ]
 })
 export class AppComponent implements OnInit {
   title = 'hashfinity';
@@ -32,19 +55,8 @@ export class AppComponent implements OnInit {
     this.isScrolled = window.scrollY > 20;
   }
 
-  toggleTheme(): void {
-
-    this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-    this.themeService.toggleTheme();
-  }
-
-  toggleMobileMenu(): void {
-    this.isMobileMenuOpen = !this.isMobileMenuOpen;
-    this.isMenuOpen = this.isMobileMenuOpen; // Sync both menu state variables
+  toggleMenu(): void {
+    this.isMenuOpen = !this.isMenuOpen;
+    this.isMobileMenuOpen = this.isMenuOpen; // Sync both menu state variables
   }
 }

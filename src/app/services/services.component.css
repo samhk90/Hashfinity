@@ -1,0 +1,162 @@
+/* Animations */
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+/* Scroll Animation */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease-out;
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Service Card Hover Effects */
+.service-card {
+  transition: all 0.3s ease-in-out;
+background-color: rgba(29, 78, 216, 0.15);
+background-color: rgba(17, 24, 39, 0.98);
+backdrop-filter: blur(10px);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Service icon styles */
+.service-icon {
+  position: relative;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+.service-icon::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: inherit;
+  filter: blur(12px);
+  opacity: 0.4;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.service-card:hover .service-icon::after {
+  opacity: 0.6;
+}
+
+/* Feature item hover effect */
+.feature-item {
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  transform: translateX(5px);
+}
+
+.feature-item span:first-child {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
+}
+
+.feature-item:hover span:first-child {
+  transform: scale(1.05);
+}
+
+/* Learn more button styles */
+.learn-more-btn {
+  position: relative;
+  overflow: hidden;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.15));
+  transition: all 0.3s ease;
+}
+
+.learn-more-btn::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  background: inherit;
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: -1;
+}
+
+.learn-more-btn:hover {
+  transform: translateY(-2px);
+}
+
+.learn-more-btn:hover::before {
+  opacity: 0.5;
+}
+
+/* Shimmer effect */
+.shimmer {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Ensure SVG icons maintain proper sizing */
+.service-icon svg {
+  width: 24px;
+  height: 24px;
+  z-index: 1;
+  position: relative;
+}
+
+/* Dark mode adjustments */
+:host-context(.dark) .service-card {
+  background: rgba(17, 24, 39, 0.98);
+}
+
+:host-context(.dark) .service-icon {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+}
+
+:host-context(.dark) .shimmer::after {
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+:host-context(.dark) .feature-item span:first-child {
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.25));
+}
+
+:host-context(.dark) .learn-more-btn {
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+}
+
+/* Animation and other existing styles remain unchanged */
