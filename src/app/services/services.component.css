@@ -30,8 +30,8 @@
 /* Service Card Hover Effects */
 .service-card {
   transition: all 0.3s ease-in-out;
-background-color: rgba(29, 78, 216, 0.15);
 background-color: rgba(17, 24, 39, 0.98);
+background: rgba(0, 0, 139, 0.98);
 backdrop-filter: blur(10px);
 }
 
