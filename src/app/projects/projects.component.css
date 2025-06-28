@@ -1,0 +1,108 @@
+/* Float animation for background elements */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.delay-1000 {
+  animation-delay: 1s;
+}
+
+.delay-2000 {
+  animation-delay: 2s;
+}
+
+/* Scroll animations */
+.scroll-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.scroll-animate.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Project card hover effects */
+.group:hover .group-hover\:scale-110 {
+  transform: scale(1.1);
+}
+
+.group:hover .group-hover\:translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+/* Enhanced backdrop blur */
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px);
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(16px);
+}
+
+/* Custom shadow variations for dark theme */
+.shadow-lg {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+}
+
+.hover\:shadow-2xl:hover {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.hover\:shadow-xl:hover {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+}
+
+/* Card glassmorphism effect */
+.bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.bg-white\/20 {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.border-white\/20 {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.border-white\/40 {
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+/* Text colors for dark theme */
+.text-blue-100 {
+  color: rgb(219, 234, 254);
+}
+
+.text-blue-200 {
+  color: rgb(191, 219, 254);
+}
+
+/* Hover effects for cards */
+.group:hover .bg-white\/10 {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Animation delays */
+[style*="animation-delay: 200ms"] {
+  animation-delay: 200ms;
+}
+
+[style*="animation-delay: 400ms"] {
+  animation-delay: 400ms;
+}
+
+[style*="animation-delay: 600ms"] {
+  animation-delay: 600ms;
+}

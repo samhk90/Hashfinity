@@ -2,62 +2,42 @@
 .content {
   padding-top: 4rem;
 }
-
+*{
+  overflow-x: hidden;
+  overflow: hidden;
+}
+body{overflow: auto;}
 /* Header Transitions */
 :host {
   display: block;
 }
   
 header {
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
   transition: all 0.3s ease-in-out;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+/* Enhanced navbar blur effect */
+header.scrolled {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 }
-  
-.header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 50;
-    transition: all 0.3s ease;
-    background: transparent;
-  }
-  
-  .header.scrolled {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
-  }
-  
-  .dark .header.scrolled {
-    background: rgba(17, 24, 39, 0.8);
-  }
-  
-  /* Mobile menu enhanced blur effect */
-  .mobile-menu {
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-  }
-  
-  .dark .mobile-menu {
-    background: rgba(17, 24, 39, 0.1);
-  }
-  
-  .nav-link {
-    transition: color 0.2s ease;
-  }
-  
-  .nav-link:hover {
-    color: #3b82f6;
-  }
+
+/* Mobile menu enhanced blur effect */
+.mobile-menu {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+.nav-link {
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover {
+  color: #3b82f6;
+}
 
 /* Mobile menu enhanced styles */
 .mobile-menu {
@@ -87,7 +67,7 @@ button {
 }
 
 button:hover {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(59, 130, 246, 0.1);
   transform: translateY(-1px);
 }
 
@@ -123,9 +103,299 @@ nav a:hover::after {
   transition: opacity 200ms, transform 200ms;
 }
 
-/* Dark mode adjustments */
-@media (prefers-color-scheme: dark) {
-  nav a::after {
-    background: #60A5FA;
+/* Modern Navigation Styles */
+.active-nav-link {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(99, 102, 241, 0.1) 100%) !important;
+  border-color: rgba(59, 130, 246, 0.5) !important;
+  color: #2563eb !important;
+  transform: scale(1.05) translateY(-2px) !important;
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3) !important;
+}
+
+.active-nav-link::after {
+  width: 100% !important;
+  background: linear-gradient(90deg, #3b82f6, #6366f1) !important;
+}
+
+/* Active Section Navigation Styles */
+.nav-item-active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.15) 0%, rgba(99, 102, 241, 0.15) 100%);
+  border: 2px solid rgba(59, 130, 246, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.25);
+}
+
+.nav-item-active::after {
+  width: 100%;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+}
+
+/* Enhanced Navigation Border Effects */
+.nav-border-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.nav-border-effect::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  padding: 2px;
+  background: linear-gradient(45deg, #3b82f6, #6366f1, #8b5cf6, #3b82f6);
+  border-radius: inherit;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.nav-border-effect:hover::before {
+  opacity: 1;
+}
+
+/* Improved Mobile Menu Active States */
+.mobile-nav-active {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.2) 0%, rgba(99, 102, 241, 0.2) 100%);
+  border-left: 4px solid #3b82f6;
+  transform: translateX(8px) scale(1.02);
+  color: #2563eb !important;
+}
+
+/* Smooth Scrolling Enhancement */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Section Scroll Padding for Better Navigation */
+section[id] {
+  scroll-margin-top: 100px;
+}
+
+/* Section Styling */
+section {
+  scroll-margin-top: 80px; /* Account for fixed header */
+  transition: all 0.3s ease;
+}
+
+section[id] {
+  position: relative;
+}
+
+/* Section Animation on Scroll */
+@keyframes sectionFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
   }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section-animate {
+  animation: sectionFadeIn 0.8s ease-out;
+}
+
+/* Project Cards Enhanced Styling */
+.project-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.project-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+/* How We Work Process Steps */
+.process-step {
+  position: relative;
+}
+
+.process-step::after {
+  content: '';
+  position: absolute;
+  top: 40px;
+  right: -50%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1);
+  z-index: -1;
+}
+
+.process-step:last-child::after {
+  display: none;
+}
+
+/* Mobile responsiveness for process steps */
+@media (max-width: 768px) {
+  .process-step::after {
+    display: none;
+  }
+}
+
+/* Enhanced Section Transitions */
+.section-transition {
+  background: linear-gradient(180deg, 
+    rgba(255, 255, 255, 0) 0%, 
+    rgba(59, 130, 246, 0.05) 50%, 
+    rgba(255, 255, 255, 0) 100%);
+  height: 100px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Improved Scroll Indicator */
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #3b82f6, #6366f1, #8b5cf6);
+  z-index: 1000;
+  transition: width 0.3s ease;
+}
+
+/* Section Background Variations */
+.section-alt {
+  background: linear-gradient(135deg, 
+    rgba(248, 250, 252, 1) 0%, 
+    rgba(241, 245, 249, 1) 100%);
+}
+
+.section-primary {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 1) 0%, 
+    rgba(248, 250, 252, 1) 100%);
+}
+
+/* Enhanced Shine Effect */
+@keyframes shine {
+  0% { transform: translateX(-100%) skewX(-12deg); }
+  100% { transform: translateX(300%) skewX(-12deg); }
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transform: skewX(-12deg);
+  transition: left 0.7s ease;
+}
+
+.shine-effect:hover::after {
+  animation: shine 0.7s ease-in-out;
+}
+
+/* Dynamic Border Animation */
+@keyframes borderPulse {
+  0%, 100% { border-color: rgba(59, 130, 246, 0.3); }
+  50% { border-color: rgba(59, 130, 246, 0.8); }
+}
+
+.border-pulse {
+  animation: borderPulse 2s infinite;
+}
+
+/* Enhanced Backdrop Effects */
+.enhanced-backdrop {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Improved Gradient Text */
+.gradient-text {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Modern Button Effects */
+.modern-btn {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: all 0.3s ease;
+}
+
+.modern-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.modern-btn:hover::before {
+  left: 100%;
+}
+
+/* Enhanced Shadow System */
+.shadow-soft {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.shadow-medium {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+}
+
+.shadow-strong {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.2);
+}
+
+.shadow-colored {
+  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.3);
+}
+
+/* Pulse Animation for Active Elements */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+/* Improved Typography */
+.nav-text {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Modern Border Radius */
+.rounded-modern {
+  border-radius: 20px;
+}
+
+/* Glassmorphism Effect */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+/* Improved Contrast */
+.high-contrast {
+  filter: contrast(1.2) brightness(1.1);
 }

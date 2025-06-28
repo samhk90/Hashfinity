@@ -39,99 +39,62 @@ export class ServicesComponent implements OnInit, AfterViewInit, OnDestroy {
   ];
 
   services: Service[] = [
+ 
     {
-      id: 'branding',
-      icon: 'palette',
-      title: 'Branding Graphic Design',
-      description: 'Create a strong, memorable brand identity that resonates with your target audience.',
+      id: 'web-app',
+      icon: 'laptop-code',
+      title: 'Web App',
+      description: 'Modern, responsive web applications built with the latest technologies.',
       features: [
-        'Logo & Visual Identity',
-        'Business Collateral Design',
-        'Rebranding Solutions',
-        'Social Media Creatives',
-        'Digital Ad Creatives',
-        'Brand Style Guides'
+        'Single Page Applications',
+        'Progressive Web Apps',
+        'Real-time Applications',
+        'API Development'
       ],
       colorClass: this.cardColor,
       iconColorClass: this.iconColorVariants[0]
     },
     {
-      id: 'web-dev',
-      icon: 'laptop-code',
-      title: 'Website & Web-App Development',
-      description: 'Custom, scalable websites and web applications that drive business growth.',
+      id: 'mobile-app',
+      icon: 'mobile-alt',
+      title: 'App',
+      description: 'Native and hybrid mobile applications for all platforms.',
       features: [
-        'Business & Portfolio Websites',
-        'E-commerce Development',
-        'Custom CMS Websites',
-        'Landing Pages & Funnels',
-        'UI/UX Design',
-        'Hosting & Domain Services'
+        'iOS Applications',
+        'Android Applications',
+        'React Native Apps',
+        'Flutter Development'
       ],
       colorClass: this.cardColor,
       iconColorClass: this.iconColorVariants[1]
     },
     {
-      id: 'mobile-dev',
-      icon: 'mobile-alt',
-      title: 'Mobile App Development',
-      description: 'Native and cross-platform mobile applications for iOS and Android.',
+      id: 'desktop-app',
+      icon: 'boxes',
+      title: 'Desktop App',
+      description: 'Cross-platform desktop applications for Windows, Mac, and Linux.',
       features: [
-        'Android App Development',
-        'iOS App Development',
-        'Cross-Platform Apps',
-        'Progressive Web Apps (PWA)',
-        'App UI/UX Design',
-        'App Store Deployment & Maintenance'
+        'Electron Applications',
+        'Native Desktop Apps',
+        'Cross-platform Solutions',
+        'System Integration'
       ],
       colorClass: this.cardColor,
       iconColorClass: this.iconColorVariants[2]
     },
     {
-      id: 'erp-solutions',
-      icon: 'boxes',
-      title: 'ERP & Custom Software',
-      description: 'Comprehensive enterprise solutions to streamline your business operations.',
+      id: 'wordpress',
+      icon: 'pen-tool',
+      title: 'WordPress',
+      description: 'Custom WordPress websites and themes tailored to your business needs.',
       features: [
-        'ERP System Development',
-        'Custom Desktop & Web Applications',
-        'SaaS Solutions',
-        'API Integrations',
-        'Employee Management System',
-        'Custom Business Solutions'
+        'Custom Theme Development',
+        'Plugin Development',
+        'WordPress Optimization',
+        'Content Management'
       ],
       colorClass: this.cardColor,
       iconColorClass: this.iconColorVariants[3]
-    },
-    {
-      id: 'digital-marketing',
-      icon: 'bullhorn',
-      title: 'Digital Marketing Services',
-      description: 'Strategic digital marketing solutions to boost your online presence.',
-      features: [
-        'Social Media Marketing',
-        'SEO Optimization',
-        'Google & Meta Ads',
-        'Email Marketing',
-        'Content Marketing',
-        'Performance Analytics'
-      ],
-      colorClass: this.cardColor,
-      iconColorClass: this.iconColorVariants[4]
-    },
-    {
-      id: 'cloud-solutions',
-      icon: 'cloud',
-      title: 'Cloud Solutions',
-      description: 'Enterprise-grade cloud infrastructure and solutions. We help businesses migrate, optimize, and scale their operations in the cloud.',
-      features: [
-        'Cloud migration',
-        'Infrastructure as Code',
-        'DevOps automation',
-        'Cloud security'
-      ],
-      colorClass: this.cardColor,
-      iconColorClass: this.iconColorVariants[5]
     }
   ];
 

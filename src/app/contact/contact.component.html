@@ -1,29 +1,20 @@
-<!-- Contact Hero Section -->
-<section class="relative bg-gradient-to-br from-blue-700 to-indigo-900 text-white overflow-hidden">
-  <!-- Background Shapes -->
-  <div class="absolute inset-0 overflow-hidden">
-    <div class="absolute -right-10 -top-20 w-72 h-72 bg-white opacity-5 rounded-full"></div>
-    <div class="absolute right-20 top-40 w-32 h-32 bg-white opacity-5 rounded-full"></div>
-    <div class="absolute -left-16 bottom-20 w-60 h-60 bg-white opacity-5 rounded-full"></div>
-    <div class="absolute left-40 top-10 w-20 h-20 bg-white opacity-5 rounded-full"></div>
-  </div>
 
-  <div class="container mx-auto px-6 py-24 relative z-10">
-    <div class="max-w-3xl mx-auto text-center">
-      <h1 class="text-4xl md:text-5xl font-bold mb-6">Contact Us</h1>
-      <p class="text-xl opacity-90">
+<!-- Contact Section -->
+<section class="py-10 bg-white dark:bg-gray-900 transition-colors duration-300">
+     <div class="container mx-auto px-6 py-10 relative z-10">
+    <div class="max-w-3xl mx-auto text-center scroll-animate">
+      <h1 class="text-4xl md:text-5xl font-bold mb-6 text-black">Contact Us</h1>
+      <p class="text-xl opacity-90 mb-8 text-black">
+        
         Get in touch with us to explore how we can help transform your business with innovative solutions.
       </p>
     </div>
   </div>
-</section>
 
-<!-- Contact Section -->
-<section class="py-16 bg-white dark:bg-gray-900 transition-colors duration-300">
   <div class="container mx-auto px-6">
     <div class="flex flex-col lg:flex-row gap-12">
       <!-- Contact Info -->
-      <div class="w-full lg:w-2/5">
+      <div class="w-full lg:w-2/5 px-10">
         <h2 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Get in Touch</h2>
         <p class="text-gray-600 dark:text-gray-300 mb-8">
           Whether you're ready to start a project or just want to explore possibilities, we'd love to hear from you.
@@ -31,18 +22,7 @@
         
         <!-- Contact Details -->
         <div class="space-y-6">
-          <div class="flex items-start">
-            <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3 mr-4">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-              </svg>
-            </div>
-            <div>
-              <h3 class="font-bold text-gray-800 dark:text-white mb-1">Our Office</h3>
-              <p class="text-gray-600 dark:text-gray-300">123 Digital Avenue, Tech City</p>
-            </div>
-          </div>
+      
           
           <div class="flex items-start">
             <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-3 mr-4">
@@ -52,7 +32,7 @@
             </div>
             <div>
               <h3 class="font-bold text-gray-800 dark:text-white mb-1">Email Us</h3>
-              <p class="text-gray-600 dark:text-gray-300">info&#64;hashfinity.com</p>
+              <p class="text-gray-600 dark:text-gray-300">hashir.dakni560gmail.com</p>
             </div>
           </div>
           
@@ -64,7 +44,8 @@
             </div>
             <div>
               <h3 class="font-bold text-gray-800 dark:text-white mb-1">Call Us</h3>
-              <p class="text-gray-600 dark:text-gray-300">+1 (555) 123-4567</p>
+              <p class="text-gray-600 dark:text-gray-300">+91 8421917322</p>
+              <p class="text-gray-600 dark:text-gray-300">+91 8855959643</p>
             </div>
           </div>
         </div>
@@ -94,11 +75,11 @@
       
       <!-- Contact Form -->
       <div class="w-full lg:w-3/5">
-        <div class="bg-white dark:bg-gray-800 rounded-lg shadow-md p-8">
-          <h2 class="text-2xl font-bold mb-6 text-gray-800 dark:text-white">Send Us a Message</h2>
+        <div class="bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl shadow-2xl shadow-blue-500/25 p-8 backdrop-blur-lg border border-blue-400/20">
+          <h2 class="text-2xl font-bold mb-6 text-white">Send Us a Message</h2>
           
           <!-- Success Message -->
-          <div *ngIf="submitted" class="bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 p-4 rounded-md mb-6">
+          <div *ngIf="submitted" class="bg-green-500/20 text-green-100 p-4 rounded-lg mb-6 backdrop-blur-sm border border-green-400/30">
             <div class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -108,7 +89,7 @@
           </div>
 
           <!-- Error Message -->
-          <div *ngIf="error" class="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 p-4 rounded-md mb-6">
+          <div *ngIf="error" class="bg-red-500/20 text-red-100 p-4 rounded-lg mb-6 backdrop-blur-sm border border-red-400/30">
             <div class="flex items-center">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -121,53 +102,50 @@
           <form (ngSubmit)="onSubmit()" #contactForm="ngForm" class="space-y-6">
             <!-- Name -->
             <div>
-              <label for="name" class="block text-gray-700 dark:text-gray-200 mb-2">Full Name <span class="text-red-500">*</span></label>
+              <label for="name" class="block text-white mb-2 font-medium">Full Name <span class="text-yellow-300">*</span></label>
               <input type="text" id="name" name="name" 
                      [(ngModel)]="formData.name" required
-                     class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 
-                            bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 
-                            text-gray-800 dark:text-white">
+                     class="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/40 
+                            text-white placeholder-white/60 transition-all duration-300 hover:bg-white/15">
             </div>
             
             <!-- Email -->
             <div>
-              <label for="email" class="block text-gray-700 dark:text-gray-200 mb-2">Email Address <span class="text-red-500">*</span></label>
+              <label for="email" class="block text-white mb-2 font-medium">Email Address <span class="text-yellow-300">*</span></label>
               <input type="email" id="email" name="email" 
                      [(ngModel)]="formData.email" required
-                     class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 
-                            bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 
-                            text-gray-800 dark:text-white">
+                     class="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/40 
+                            text-white placeholder-white/60 transition-all duration-300 hover:bg-white/15">
             </div>
             
             <!-- Phone -->
             <div>
-              <label for="phone" class="block text-gray-700 dark:text-gray-200 mb-2">Phone Number</label>
+              <label for="phone" class="block text-white mb-2 font-medium">Phone Number</label>
               <input type="tel" id="phone" name="phone" 
                      [(ngModel)]="formData.phone"
-                     class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 
-                            bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 
-                            text-gray-800 dark:text-white">
+                     class="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/40 
+                            text-white placeholder-white/60 transition-all duration-300 hover:bg-white/15">
             </div>
             
             <!-- Message -->
             <div>
-              <label for="message" class="block text-gray-700 dark:text-gray-200 mb-2">Message <span class="text-red-500">*</span></label>
+              <label for="message" class="block text-white mb-2 font-medium">Message <span class="text-yellow-300">*</span></label>
               <textarea id="message" name="message" rows="4" 
                         [(ngModel)]="formData.message" required
-                        class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 
-                               bg-white dark:bg-gray-700 border-gray-300 dark:border-gray-600 
-                               text-gray-800 dark:text-white"></textarea>
+                        class="w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/20 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/40 
+                               text-white placeholder-white/60 transition-all duration-300 hover:bg-white/15 resize-none"></textarea>
             </div>
             
             <!-- Submit Button -->
             <button type="submit" 
                     [disabled]="!contactForm.form.valid || submitting" 
-                    class="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white py-3 px-6 rounded-md font-medium 
-                           hover:from-blue-700 hover:to-blue-800 focus:outline-none focus:ring-2 focus:ring-blue-500 
-                           disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300">
+                    class="w-full bg-white text-blue-600 py-3 px-6 rounded-lg font-semibold 
+                           hover:bg-white/90 focus:outline-none focus:ring-2 focus:ring-white/50 
+                           disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300
+                           shadow-lg hover:shadow-xl transform hover:scale-105">
               <span *ngIf="!submitting">Send Message</span>
               <span *ngIf="submitting" class="flex items-center justify-center">
-                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-blue-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                   <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>
@@ -177,14 +155,7 @@
           </form>
         </div>
         
-        <!-- Map Placeholder -->
-        <div class="mt-8 bg-white dark:bg-gray-800 rounded-lg p-6 text-center">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 mx-auto mb-4 text-gray-400 dark:text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-          </svg>
-          <p class="text-gray-600 dark:text-gray-400">Map integration would be here in a production environment</p>
-          <p class="text-gray-600 dark:text-gray-400 mt-2">Address: 123 Digital Avenue, Tech City</p>
-        </div>
+
       </div>
     </div>
   </div>

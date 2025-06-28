@@ -1,49 +1,22 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  private darkMode = new BehaviorSubject<boolean>(this.getInitialThemeState());
-
   constructor() {
-    // Apply initial theme
-    this.applyTheme(this.darkMode.value);
-  }
-
-  private getInitialThemeState(): boolean {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      return savedTheme === 'dark';
-    }
-    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    // Ensure light theme is always applied
+    this.applyLightTheme();
   }
 
   isDarkTheme(): boolean {
-    return this.darkMode.value;
+    // Always return false as we only support light theme
+    return false;
   }
 
-  toggleTheme(): void {
-    console.log('Current theme state before toggle:', this.darkMode.value ? 'dark' : 'light');
-    const newValue = !this.darkMode.value;
-    console.log('New theme state after toggle:', newValue ? 'dark' : 'light');
-    this.darkMode.next(newValue);
-    this.applyTheme(newValue);
-  }
-
-  private applyTheme(isDark: boolean): void {
-    console.log('Applying theme:', isDark ? 'dark' : 'light');
-    console.log('Current classList:', document.documentElement.classList.toString());
-    
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-    
-    console.log('Updated classList:', document.documentElement.classList.toString());
+  private applyLightTheme(): void {
+    // Remove any dark theme classes and set light theme
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
   }
 }

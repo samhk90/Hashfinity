@@ -1,55 +1,237 @@
-<div class="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300">
+<div class="min-h-screen bg-white transition-colors duration-300">
   <!-- Header section -->
   <header 
-    class="fixed bg-blue-800 top-0 py-1 left-0 right-0 z-50 transition-all duration-300">
-    <nav class="container mx-auto px-6 py-1">
+    [class]="'fixed top-0 py-1  left-0 right-0 z-50 transition-all duration-500 ease-in-out ' + 
+             (isScrolled ? 'bg-white/70 backdrop-blur-xl shadow-2xl border-b border-white/20' : 'bg-transparent')">
+    <nav class="container mx-auto px-6">
         <div class="flex items-center justify-between">
             <!-- Logo -->
-            <div class="flex items-center">
-                <a routerLink="/" class="flex items-center gap-2 z-50">
-                    <img src="assets/logo1.png" alt="Logo" class="h-10">
-                    <span class="text-2xl text-white  font-extrabold tracking-wider drop-shadow-md" 
-                          style="text-shadow:0 1px 8px rgba(0,0,0,0.25);  padding:0 0.25em; border-radius:0.25em;">
-                        Hashfinity
-                    </span>
-                </a>
-            </div>
+            <a routerLink="/" class="flex items-center gap-3 z-50 transform transition-transform duration-300 ">
+              <img src="assets/logo1.png" alt="Logo" class="transition-all duration-300" width="190" height="80">
+            </a>
 
             <!-- Desktop Menu -->
-            <div class="hidden md:flex items-center space-x-8">
-                <a routerLink="/" 
-                   class="transition-colors text-white duration-300 hover:text-cyan-600">Home</a>
-                <a routerLink="/services"
-                   class="transition-colors text-white duration-300 hover:text-blue-600">Services</a>
-                <a routerLink="/contact"
-                   class="transition-colors text-white duration-300 hover:text-blue-600">Contact</a>
+    <!-- Desktop Menu -->
+<div class="hidden lg:flex items-center space-x-6">
+  <a href="#home"
+     class="group relative px-6 py-3 font-semibold text-lg transition-all duration-500 rounded-2xl overflow-hidden"
+     [ngClass]="{
+       'text-white hover:text-blue-200': !isScrolled,
+       'text-gray-800 hover:text-blue-600': isScrolled
+     }"
+     (click)="setActiveSection('home')">
+    <span class="relative z-10">Home</span>
+    <!-- Background overlay -->
+    <div class="absolute inset-0 rounded-2xl transition-all duration-500 transform scale-0 group-hover:scale-100"
+         [ngClass]="{
+           'bg-white/20 border border-white/30': !isScrolled,
+           'bg-blue-50/80 border border-blue-200/50': isScrolled
+         }"></div>
+    <!-- Active state indicator -->
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 transition-all duration-500 group-hover:w-full rounded-full"
+         [ngClass]="{
+           'bg-white shadow-lg': !isScrolled,
+           'bg-blue-500 shadow-blue-500/50': isScrolled
+         }"
+         [class.w-full]="activeSection === 'home'"></div>
+    <!-- Shine effect -->
+    <div class="absolute inset-0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  </a>
 
-            </div>
+  <a href="#about"
+     class="group relative px-6 py-3 font-semibold text-lg transition-all duration-500 rounded-2xl overflow-hidden"
+     [ngClass]="{
+       'text-white hover:text-blue-200': !isScrolled,
+       'text-gray-800 hover:text-blue-600': isScrolled
+     }"
+     (click)="setActiveSection('about')">
+    <span class="relative z-10">About Us</span>
+    <div class="absolute inset-0 rounded-2xl transition-all duration-500 transform scale-0 group-hover:scale-100"
+         [ngClass]="{
+           'bg-white/20 border border-white/30': !isScrolled,
+           'bg-blue-50/80 border border-blue-200/50': isScrolled
+         }"></div>
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 transition-all duration-500 group-hover:w-full rounded-full"
+         [ngClass]="{
+           'bg-white shadow-lg': !isScrolled,
+           'bg-blue-500 shadow-blue-500/50': isScrolled
+         }"
+         [class.w-full]="activeSection === 'about'"></div>
+    <div class="absolute inset-0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  </a>
+
+  <a href="#projects"
+     class="group relative px-6 py-3 font-semibold text-lg transition-all duration-500 rounded-2xl overflow-hidden"
+     [ngClass]="{
+       'text-white hover:text-blue-200': !isScrolled,
+       'text-gray-800 hover:text-blue-600': isScrolled
+     }"
+     (click)="setActiveSection('projects')">
+    <span class="relative z-10">Projects</span>
+    <div class="absolute inset-0 rounded-2xl transition-all duration-500 transform scale-0 group-hover:scale-100"
+         [ngClass]="{
+           'bg-white/20 border border-white/30': !isScrolled,
+           'bg-blue-50/80 border border-blue-200/50': isScrolled
+         }"></div>
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 transition-all duration-500 group-hover:w-full rounded-full"
+         [ngClass]="{
+           'bg-white shadow-lg': !isScrolled,
+           'bg-blue-500 shadow-blue-500/50': isScrolled
+         }"
+         [class.w-full]="activeSection === 'projects'"></div>
+    <div class="absolute inset-0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  </a>
+
+  <a href="#services"
+     class="group relative px-6 py-3 font-semibold text-lg transition-all duration-500 rounded-2xl overflow-hidden"
+     [ngClass]="{
+       'text-white hover:text-blue-200': !isScrolled,
+       'text-gray-800 hover:text-blue-600': isScrolled
+     }"
+     (click)="setActiveSection('services')">
+    <span class="relative z-10">Services</span>
+    <div class="absolute inset-0 rounded-2xl transition-all duration-500 transform scale-0 group-hover:scale-100"
+         [ngClass]="{
+           'bg-white/20 border border-white/30': !isScrolled,
+           'bg-blue-50/80 border border-blue-200/50': isScrolled
+         }"></div>
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 transition-all duration-500 group-hover:w-full rounded-full"
+         [ngClass]="{
+           'bg-white shadow-lg': !isScrolled,
+           'bg-blue-500 shadow-blue-500/50': isScrolled
+         }"
+         [class.w-full]="activeSection === 'services'"></div>
+    <div class="absolute inset-0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  </a>
+
+  <a href="#howwework"
+     class="group relative px-6 py-3 font-semibold text-lg transition-all duration-500 rounded-2xl overflow-hidden"
+     [ngClass]="{
+       'text-white hover:text-blue-200': !isScrolled,
+       'text-gray-800 hover:text-blue-600': isScrolled
+     }"
+     (click)="setActiveSection('howwework')">
+    <span class="relative z-10">How We Work</span>
+    <div class="absolute inset-0 rounded-2xl transition-all duration-500 transform scale-0 group-hover:scale-100"
+         [ngClass]="{
+           'bg-white/20 border border-white/30': !isScrolled,
+           'bg-blue-50/80 border border-blue-200/50': isScrolled
+         }"></div>
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 transition-all duration-500 group-hover:w-full rounded-full"
+         [ngClass]="{
+           'bg-white shadow-lg': !isScrolled,
+           'bg-blue-500 shadow-blue-500/50': isScrolled
+         }"
+         [class.w-full]="activeSection === 'howwework'"></div>
+    <div class="absolute inset-0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+  </a>
+
+  <a href="#contact"
+     class="group relative px-6 py-3 font-semibold text-lg transition-all duration-500 rounded-2xl overflow-hidden border-2 transform hover:scale-105"
+     [ngClass]="{
+       'text-white border-white hover:bg-white hover:text-gray-900': !isScrolled,
+       'text-gray-800 border-gray-800 hover:bg-gray-800 hover:text-white': isScrolled
+     }"
+     (click)="setActiveSection('contact')">
+    <span class="relative z-10">Contact Us</span>
+    <!-- Special CTA button effect -->
+    <div class="absolute inset-0 rounded-xl transition-all duration-500 transform scale-0 group-hover:scale-100"
+         [ngClass]="{
+           'bg-white/10': !isScrolled,
+           'bg-gray-800/10': isScrolled
+         }"></div>
+    <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-1 transition-all duration-500 group-hover:w-full rounded-full"
+         [ngClass]="{
+           'bg-white shadow-lg': !isScrolled,
+           'bg-gray-800 shadow-gray-800/50': isScrolled
+         }"
+         [class.w-full]="activeSection === 'contact'"></div>
+    <div class="absolute inset-0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
+  </a>
+</div>
+  
 
             <!-- Mobile Menu Button -->
             <button (click)="toggleMenu()" 
-                    class="md:hidden p-2 text-gray bg-blue-800 rounded-lg border transition-all duration-300">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                    [class]="'md:hidden p-4 rounded-2xl border-2 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 backdrop-blur-sm shadow-lg hover:shadow-2xl ' + 
+                             (isScrolled ? 'text-gray-800 bg-gradient-to-r from-white/90 to-blue-50/90 border-blue-200 hover:from-blue-50 hover:to-indigo-50 hover:border-blue-400 hover:text-blue-600' : 'text-white bg-gradient-to-r from-blue-800/80 to-indigo-800/80 border-blue-500 hover:from-blue-700 hover:to-indigo-700 hover:border-blue-300')">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 transition-all duration-500 hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M4 6h16M4 12h16M4 18h16" />
                 </svg>
             </button>
         </div>
 
         <!-- Mobile Menu with Animation -->
         <div [@slideInOut]="isMenuOpen ? 'open' : 'closed'"
-             class="md:hidden fixed top-[3.6rem] left-0 right-0 overflow-hidden bg-blue-800/95 backdrop-blur-md shadow-lg transition-all duration-300"
-             style="transform-origin: top">
-            <div class="py-4 px-6 space-y-4 border-t border-white/10">
-                <a routerLink="/" 
-                   routerLinkActive="text-blue-400"
-                   [routerLinkActiveOptions]="{exact: true}"
-                   class="block transition-colors duration-300 text-gray-200 hover:text-blue-400">Home</a>
-                <a routerLink="/services"
-                   routerLinkActive="text-blue-400"
-                   class="block transition-colors duration-300 text-gray-200 hover:text-blue-400">Services</a>
-                <a routerLink="/contact"
-                   routerLinkActive="text-blue-400"
-                   class="block transition-colors duration-300 text-gray-200 hover:text-blue-400">Contact</a>
+             class="md:hidden fixed top-[4.5rem] left-0 right-0 overflow-hidden bg-gradient-to-br from-white/95 to-blue-50/95 backdrop-blur-2xl shadow-2xl border-t-2 border-blue-200/50 transition-all duration-700"
+             style="transform-origin: top; box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);">
+            <div class="py-8 px-6 space-y-4">
+                <a href="#home" 
+                   (click)="setActiveSection('home')"
+                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
+                            (activeSection === 'home' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
+                   <span class="flex items-center justify-between">
+                       <span>Home</span>
+                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                       </svg>
+                   </span>
+                </a>
+                <a href="#about"
+                   (click)="setActiveSection('about')"
+                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
+                            (activeSection === 'about' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
+                   <span class="flex items-center justify-between">
+                       <span>About Us</span>
+                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                       </svg>
+                   </span>
+                </a>
+                <a href="#projects"
+                   (click)="setActiveSection('projects')"
+                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
+                            (activeSection === 'projects' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
+                   <span class="flex items-center justify-between">
+                       <span>Projects</span>
+                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                       </svg>
+                   </span>
+                </a>
+                <a href="#services"
+                   (click)="setActiveSection('services')"
+                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
+                            (activeSection === 'services' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
+                   <span class="flex items-center justify-between">
+                       <span>Services</span>
+                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                       </svg>
+                   </span>
+                </a>
+                <a href="#howwework"
+                   (click)="setActiveSection('howwework')"
+                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
+                            (activeSection === 'howwework' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
+                   <span class="flex items-center justify-between">
+                       <span>How We Work</span>
+                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                       </svg>
+                   </span>
+                </a>
+                <a href="#contact"
+                   (click)="setActiveSection('contact')"
+                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
+                            (activeSection === 'contact' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
+                   <span class="flex items-center justify-between">
+                       <span>Contact</span>
+                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                       </svg>
+                   </span>
+                </a>
             </div>
         </div>
     </nav>
@@ -57,25 +239,143 @@
 
   <!-- Main content without padding -->
   <main>
-    <router-outlet></router-outlet>
+    <!-- Home Section -->
+    <section id="home" class="min-h-screen">
+      <app-home></app-home>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="min-h-screen">
+      <app-about></app-about>
+    </section>
+    <!-- Projects Section -->
+         <!-- Services Section -->
+    <section id="services" class="min-h-screen">
+      <app-services></app-services>
+    </section>
+    <section id="projects" class="min-h-screen">
+      <app-projects></app-projects>
+    </section>
+
+
+    <!-- How We Work Section -->
+    <section id="howwework" class="min-h-screen">
+      <app-howwework></app-howwework>
+    </section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="min-h-screen">
+      <app-contact></app-contact>
+    </section>
+    <!-- Contact Hero Section -->
+<section class="relative bg-gradient-to-br from-blue-700 to-indigo-900 text-white overflow-hidden">
+  <!-- Background Shapes -->
+  <div class="absolute inset-0 overflow-hidden">
+    <div class="absolute -right-10 -top-20 w-72 h-72 bg-white opacity-5 rounded-full"></div>
+    <div class="absolute right-20 top-40 w-32 h-32 bg-white opacity-5 rounded-full"></div>
+    <div class="absolute -left-16 bottom-20 w-60 h-60 bg-white opacity-5 rounded-full"></div>
+    <div class="absolute left-40 top-10 w-20 h-20 bg-white opacity-5 rounded-full"></div>
+  </div>
+
+      <div class="p-5 grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
+          
+        
+     <!-- Client Satisfaction Stat -->
+          <div class="group relative">
+            <div class="relative overflow-hidden rounded-2xl  p-6 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:rounded-2xl hover:shadow-white-500/20">
+              <!-- Floating Particles -->
+              <div class="absolute top-3 right-3 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-60"></div>
+              <div class="absolute bottom-3 left-3 w-1 h-1 bg-indigo-400 rounded-full animate-bounce opacity-40"></div>
+              
+              <!-- Icon -->
+              <div class="mb-4 mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                   <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                </svg>
+              </div>
+              
+              <!-- Number with Counter Animation -->
+              <div class="mb-2">
+                <span class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">50+</span>
+              </div>
+              
+                    <h3 class="text-lg font-semibold text-white mb-2">Active Clients</h3>
+              <p class="text-white/80 text-sm">Trusted by businesses worldwide</p>
+              </div>
+            </div>
+                 <!-- Client Satisfaction Stat -->
+          <div class="group relative">
+            <div class="relative overflow-hidden rounded-2xl  p-6 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-white-500/20">
+              <!-- Floating Particles -->
+              <div class="absolute top-3 right-3 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-60"></div>
+              <div class="absolute bottom-3 left-3 w-1 h-1 bg-indigo-400 rounded-full animate-bounce opacity-40"></div>
+              
+              <!-- Icon -->
+              <div class="mb-4 mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+              <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+                </svg>
+              </div>
+              
+              <!-- Number with Counter Animation -->
+              <div class="mb-2">
+                <span class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">25+</span>
+              </div>
+              
+                     <h3 class="text-lg font-semibold text-white mb-2">Deployed Projects</h3>
+              <p class="text-white/80 text-sm">Successfully launched solutions</p>
+
+              </div>
+            </div>
+                 <!-- Client Satisfaction Stat -->
+          <div class="group relative">
+            <div class="relative overflow-hidden rounded-2xl  p-6 transition-all duration-500 hover:scale-105 hover:shadow-xl hover:shadow-white-500/20">
+              <!-- Floating Particles -->
+              <div class="absolute top-3 right-3 w-2 h-2 bg-blue-400 rounded-full animate-ping opacity-60"></div>
+              <div class="absolute bottom-3 left-3 w-1 h-1 bg-indigo-400 rounded-full animate-bounce opacity-40"></div>
+              
+              <!-- Icon -->
+              <div class="mb-4 mx-auto w-16 h-16 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl flex items-center justify-center shadow-lg shadow-indigo-500/25 group-hover:scale-110 group-hover:rotate-6 transition-all duration-500">
+                <svg class="w-8 h-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                </svg>
+              </div>
+              
+              <!-- Number with Counter Animation -->
+              <div class="mb-2">
+                <span class="text-4xl font-bold bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">99%</span>
+              </div>
+              
+              <!-- Label -->
+              <h3 class="text-lg font-semibold text-white mb-2">Client Satisfaction</h3>
+              <p class="text-white/80 text-sm">Exceptional service quality</p>
+
+              </div>
+            </div>
+
+     
+          </div>
+</section>
+
   </main>
 
   <!-- Footer Section -->
-  <footer class="bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 transition-colors duration-300">
+  <footer class="bg-gray-100 text-gray-700 transition-colors duration-300">
     <div class="container mx-auto px-6 py-10">
       <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         <!-- Column 1: About -->
         <div>
-          <h3 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Hashfinity Labs</h3>
+          <h3 class="text-xl font-bold mb-4 text-blue-600">Hashfinity Labs</h3>
           <p class="mb-4">We help businesses grow, streamline operations, and maximize their digital potential with cutting-edge solutions.</p>
           <div class="flex space-x-4">
             <!-- Social Media Icons -->
-            <a href="#" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
+            <a href="#" class="text-gray-500 hover:text-blue-600">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path>
               </svg>
             </a>
-            <a href="#" class="text-gray-500 hover:text-blue-600 dark:hover:text-blue-400">
+            <a href="#" class="text-gray-500 hover:text-blue-600">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M6.94 5a2 2 0 1 1-4-.002 2 2 0 0 1 4 .002zM7 8.48H3V21h4V8.48zm6.32 0H9.34V21h3.94v-6.57c0-3.66 4.77-4 4.77 0V21H22v-7.93c0-6.17-7.06-5.94-8.72-2.91l.04-1.68z"></path>
               </svg>
@@ -85,33 +385,33 @@
         
         <!-- Column 2: Quick Links -->
         <div>
-          <h3 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Quick Links</h3>
+          <h3 class="text-xl font-bold mb-4 text-blue-600">Quick Links</h3>
           <ul class="space-y-2">
-            <li><a href="/" class="hover:text-blue-600 dark:hover:text-blue-400">Home</a></li>
-            <li><a href="/services" class="hover:text-blue-600 dark:hover:text-blue-400">Services</a></li>
-            <li><a href="/contact" class="hover:text-blue-600 dark:hover:text-blue-400">Contact</a></li>
+            <li><a href="/" class="hover:text-blue-600">Home</a></li>
+            <li><a href="/services" class="hover:text-blue-600">Services</a></li>
+            <li><a href="/contact" class="hover:text-blue-600">Contact</a></li>
           </ul>
         </div>
         
         <!-- Column 3: Contact -->
         <div>
-          <h3 class="text-xl font-bold mb-4 text-blue-600 dark:text-blue-400">Contact Us</h3>
+          <h3 class="text-xl font-bold mb-4 text-blue-600">Contact Us</h3>
           <ul class="space-y-2">
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-1 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
               </svg>
               <span>123 Digital Avenue, Tech City</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-1 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
               <span>info&#64;hashfinity.com</span>
             </li>
             <li class="flex items-start">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-1 text-blue-600 dark:text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 mt-1 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
               </svg>
               <span>+1 (555) 123-4567</span>
@@ -120,11 +420,11 @@
         </div>
       </div>
 
-      <div class="mt-8 border-t border-gray-300 dark:border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
+      <div class="mt-8 border-t border-gray-300 pt-6 flex flex-col md:flex-row justify-between items-center">
         <p>&copy; {{currentYear}} Hashfinity. All rights reserved.</p>
         <div class="mt-4 md:mt-0">
-          <a href="#" class="text-sm mr-4 hover:text-blue-600 dark:hover:text-blue-400">Privacy Policy</a>
-          <a href="#" class="text-sm hover:text-blue-600 dark:hover:text-blue-400">Terms of Service</a>
+          <a href="#" class="text-sm mr-4 hover:text-blue-600">Privacy Policy</a>
+          <a href="#" class="text-sm hover:text-blue-600">Terms of Service</a>
         </div>
       </div>
     </div>
