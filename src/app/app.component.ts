@@ -43,15 +43,16 @@ import { ProjectsComponent } from './projects/projects.component';
   ]
 })
 export class AppComponent implements OnInit {
+  private observer: IntersectionObserver | null = null;
+  private observedElements: Set<Element> = new Set();
   title = 'hashfinity';
   favIcon = 'assets/logo.jpg';
   isMenuOpen = false;
-  isScrolled = false;
+  isScrolled = false   ;
   currentYear = new Date().getFullYear();
   activeSection = 'home'; // Track active section
-
-  isMobileMenuOpen = false;
   private sections = ['home', 'about', 'projects', 'services', 'howwework', 'contact'];
+  isMobileMenuOpen = false; // Track mobile menu state
   
   constructor(public themeService: ThemeService) {
     // Theme service now handles light theme only
@@ -59,47 +60,23 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.checkScroll();
-    this.checkActiveSection(); // Start checking for active sections
   }
 
   @HostListener('window:scroll', [])
   checkScroll() {
     this.isScrolled = window.scrollY > 20;
-    this.checkActiveSection(); // Check active section on scroll
-  }
-
-  checkActiveSection() {
-    const scrollPosition = window.scrollY + 100; // Offset for better detection
-    
-    for (const section of this.sections) {
-      const element = document.getElementById(section);
-      if (element) {
-        const offsetTop = element.offsetTop;
-        const offsetHeight = element.offsetHeight;
-        
-        if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-          this.activeSection = section;
-          break;
-        }
-      }
-    }
   }
 
   setActiveSection(section: string) {
     this.activeSection = section;
-    // Close mobile menu when navigation item is clicked
-    this.isMenuOpen = false;
-    this.isMobileMenuOpen = false;
-    
-    // Smooth scroll to section
-    const element = document.getElementById(section);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    this.closeMobileMenu(); // Close mobile menu when navigating
   }
 
-  toggleMenu(): void {
-    this.isMenuOpen = !this.isMenuOpen;
-    this.isMobileMenuOpen = this.isMenuOpen; // Sync both menu state variables
+  toggleMobileMenu() {
+    this.isMobileMenuOpen = !this.isMobileMenuOpen;
+  }
+
+  closeMobileMenu() {
+    this.isMobileMenuOpen = false;
   }
 }

@@ -1,7 +1,7 @@
 <div class="min-h-screen bg-white transition-colors duration-300">
   <!-- Header section -->
   <header 
-    [class]="'fixed top-0 py-1  left-0 right-0 z-50 transition-all duration-500 ease-in-out ' + 
+    [class]="'fixed top-0 py-2  left-0 right-0 z-50 transition-all duration-500 ease-in-out ' + 
              (isScrolled ? 'bg-white/70 backdrop-blur-xl shadow-2xl border-b border-white/20' : 'bg-transparent')">
     <nav class="container mx-auto px-6">
         <div class="flex items-center justify-between">
@@ -148,95 +148,219 @@
          [class.w-full]="activeSection === 'contact'"></div>
     <div class="absolute inset-0 -skew-x-12 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent"></div>
   </a>
-</div>
-  
-
-            <!-- Mobile Menu Button -->
-            <button (click)="toggleMenu()" 
-                    [class]="'md:hidden p-4 rounded-2xl border-2 transition-all duration-500 transform hover:scale-110 hover:-translate-y-1 backdrop-blur-sm shadow-lg hover:shadow-2xl ' + 
-                             (isScrolled ? 'text-gray-800 bg-gradient-to-r from-white/90 to-blue-50/90 border-blue-200 hover:from-blue-50 hover:to-indigo-50 hover:border-blue-400 hover:text-blue-600' : 'text-white bg-gradient-to-r from-blue-800/80 to-indigo-800/80 border-blue-500 hover:from-blue-700 hover:to-indigo-700 hover:border-blue-300')">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 transition-all duration-500 hover:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
+</div> 
+                     <!-- Mobile Menu Button -->
+            <button 
+              class="lg:hidden relative z-50 p-1 rounded-lg transition-all duration-300"
+              [ngClass]="{
+                'text-white hover:bg-white/10': !isScrolled,
+                'text-gray-800 hover:bg-gray-100': isScrolled
+              }"
+              (click)="toggleMobileMenu()"
+              aria-label="Toggle mobile menu">
+              
+              <!-- Hamburger Icon -->
+              <div class="w-6 h-6 relative flex flex-col justify-center items-center">
+                <span class="block w-5 h-0.5 transition-all duration-300 transform"
+                      [ngClass]="{
+                        'bg-white rotate-45 translate-y-0.5': !isScrolled && isMobileMenuOpen,
+                        'bg-gray-800 rotate-45 translate-y-0.5': isScrolled && isMobileMenuOpen,
+                        'bg-white': !isScrolled && !isMobileMenuOpen,
+                        'bg-gray-800': isScrolled && !isMobileMenuOpen
+                      }"></span>
+                <span class="block w-5 h-0.5 my-1 transition-all duration-300"
+                      [ngClass]="{
+                        'opacity-0': isMobileMenuOpen,
+                        'bg-white': !isScrolled && !isMobileMenuOpen,
+                        'bg-gray-800': isScrolled && !isMobileMenuOpen
+                      }"></span>
+                <span class="block w-5 h-0.5 transition-all duration-300 transform"
+                      [ngClass]="{
+                        'bg-white -rotate-45 -translate-y-0.5': !isScrolled && isMobileMenuOpen,
+                        'bg-gray-800 -rotate-45 -translate-y-0.5': isScrolled && isMobileMenuOpen,
+                        'bg-white': !isScrolled && !isMobileMenuOpen,
+                        'bg-gray-800': isScrolled && !isMobileMenuOpen
+                      }"></span>
+              </div>
             </button>
         </div>
+        </nav>
+          <!-- Mobile Menu Overlay -->
+    
 
-        <!-- Mobile Menu with Animation -->
-        <div [@slideInOut]="isMenuOpen ? 'open' : 'closed'"
-             class="md:hidden fixed top-[4.5rem] left-0 right-0 overflow-hidden bg-gradient-to-br from-white/95 to-blue-50/95 backdrop-blur-2xl shadow-2xl border-t-2 border-blue-200/50 transition-all duration-700"
-             style="transform-origin: top; box-shadow: 0 20px 60px rgba(59, 130, 246, 0.15);">
-            <div class="py-8 px-6 space-y-4">
-                <a href="#home" 
-                   (click)="setActiveSection('home')"
-                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
-                            (activeSection === 'home' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
-                   <span class="flex items-center justify-between">
-                       <span>Home</span>
-                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                       </svg>
-                   </span>
-                </a>
-                <a href="#about"
-                   (click)="setActiveSection('about')"
-                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
-                            (activeSection === 'about' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
-                   <span class="flex items-center justify-between">
-                       <span>About Us</span>
-                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                       </svg>
-                   </span>
-                </a>
-                <a href="#projects"
-                   (click)="setActiveSection('projects')"
-                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
-                            (activeSection === 'projects' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
-                   <span class="flex items-center justify-between">
-                       <span>Projects</span>
-                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                       </svg>
-                   </span>
-                </a>
-                <a href="#services"
-                   (click)="setActiveSection('services')"
-                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
-                            (activeSection === 'services' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
-                   <span class="flex items-center justify-between">
-                       <span>Services</span>
-                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                       </svg>
-                   </span>
-                </a>
-                <a href="#howwework"
-                   (click)="setActiveSection('howwework')"
-                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
-                            (activeSection === 'howwework' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
-                   <span class="flex items-center justify-between">
-                       <span>How We Work</span>
-                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                       </svg>
-                   </span>
-                </a>
-                <a href="#contact"
-                   (click)="setActiveSection('contact')"
-                   [class]="'group block transition-all duration-500 text-gray-800 hover:text-blue-600 font-semibold text-lg py-4 px-6 rounded-2xl hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 backdrop-blur-sm transform hover:translate-x-4 hover:scale-105 border-2 border-transparent hover:border-blue-200 hover:shadow-lg ' + 
-                            (activeSection === 'contact' ? 'text-blue-600 bg-gradient-to-r from-blue-100 to-indigo-100 border-l-4 border-blue-500 scale-105' : '')">
-                   <span class="flex items-center justify-between">
-                       <span>Contact</span>
-                       <svg class="w-5 h-5 transform group-hover:translate-x-2 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
-                       </svg>
-                   </span>
-                </a>
+  </header>
+    <div class="lg:hidden fixed inset-0 z-5000 transition-all duration-500"
+             [ngClass]="{
+               'opacity-100 pointer-events-auto': isMobileMenuOpen,
+               'opacity-0 pointer-events-none': !isMobileMenuOpen
+             }">
+          
+          <!-- Backdrop -->
+          <div class="absolute inset-0 bg-black/50 backdrop-blur-sm transition-opacity duration-500"
+               (click)="closeMobileMenu()"></div>
+
+          <!-- Mobile Menu Panel -->
+          <div class="absolute top-0 right-0 h-full w-80 max-w-sm bg-white/95 backdrop-blur-xl shadow-2xl transform transition-transform duration-500 ease-out"
+               [ngClass]="{
+                 'translate-x-0': isMobileMenuOpen,
+                 'translate-x-full': !isMobileMenuOpen
+               }">
+            
+            <!-- Menu Header -->
+            <div class="px-6 py-8 border-b border-gray-200/50">
+              <div class="flex items-center justify-between">
+                <img src="assets/logo1.png" alt="Logo" class="h-12 w-auto">
+                <button 
+                  (click)="closeMobileMenu()"
+                  class="p-2 rounded-lg text-gray-600 hover:text-gray-800 hover:bg-gray-100 transition-colors duration-200">
+                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                  </svg>
+                </button>
+              </div>
             </div>
-        </div>
-    </nav>
-</header>
 
+            <!-- Menu Items -->
+            <nav class="px-6 py-6 space-y-3">
+              <a href="#home"
+                 class="group flex items-center px-4 py-4 rounded-xl text-gray-800 font-semibold text-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-600 transform hover:scale-105"
+                 [class.bg-gradient-to-r]="activeSection === 'home'"
+                 [class.from-blue-50]="activeSection === 'home'"
+                 [class.to-indigo-50]="activeSection === 'home'"
+                 [class.text-blue-600]="activeSection === 'home'"
+                 [class.shadow-lg]="activeSection === 'home'"
+                 (click)="setActiveSection('home')">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 rounded-full mr-4 transition-all duration-300"
+                       [ngClass]="{
+                         'bg-blue-500': activeSection === 'home',
+                         'bg-gray-300 group-hover:bg-blue-400': activeSection !== 'home'
+                       }"></div>
+                  <span>Home</span>
+                </div>
+                <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="#about"
+                 class="group flex items-center px-4 py-4 rounded-xl text-gray-800 font-semibold text-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-600 transform hover:scale-105"
+                 [class.bg-gradient-to-r]="activeSection === 'about'"
+                 [class.from-blue-50]="activeSection === 'about'"
+                 [class.to-indigo-50]="activeSection === 'about'"
+                 [class.text-blue-600]="activeSection === 'about'"
+                 [class.shadow-lg]="activeSection === 'about'"
+                 (click)="setActiveSection('about')">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 rounded-full mr-4 transition-all duration-300"
+                       [ngClass]="{
+                         'bg-blue-500': activeSection === 'about',
+                         'bg-gray-300 group-hover:bg-blue-400': activeSection !== 'about'
+                       }"></div>
+                  <span>About Us</span>
+                </div>
+                <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="#projects"
+                 class="group flex items-center px-4 py-4 rounded-xl text-gray-800 font-semibold text-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-600 transform hover:scale-105"
+                 [class.bg-gradient-to-r]="activeSection === 'projects'"
+                 [class.from-blue-50]="activeSection === 'projects'"
+                 [class.to-indigo-50]="activeSection === 'projects'"
+                 [class.text-blue-600]="activeSection === 'projects'"
+                 [class.shadow-lg]="activeSection === 'projects'"
+                 (click)="setActiveSection('projects')">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 rounded-full mr-4 transition-all duration-300"
+                       [ngClass]="{
+                         'bg-blue-500': activeSection === 'projects',
+                         'bg-gray-300 group-hover:bg-blue-400': activeSection !== 'projects'
+                       }"></div>
+                  <span>Projects</span>
+                </div>
+                <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="#services"
+                 class="group flex items-center px-4 py-4 rounded-xl text-gray-800 font-semibold text-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-600 transform hover:scale-105"
+                 [class.bg-gradient-to-r]="activeSection === 'services'"
+                 [class.from-blue-50]="activeSection === 'services'"
+                 [class.to-indigo-50]="activeSection === 'services'"
+                 [class.text-blue-600]="activeSection === 'services'"
+                 [class.shadow-lg]="activeSection === 'services'"
+                 (click)="setActiveSection('services')">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 rounded-full mr-4 transition-all duration-300"
+                       [ngClass]="{
+                         'bg-blue-500': activeSection === 'services',
+                         'bg-gray-300 group-hover:bg-blue-400': activeSection !== 'services'
+                       }"></div>
+                  <span>Services</span>
+                </div>
+                <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="#howwework"
+                 class="group flex items-center px-4 py-4 rounded-xl text-gray-800 font-semibold text-lg transition-all duration-300 hover:bg-gradient-to-r hover:from-blue-50 hover:to-indigo-50 hover:text-blue-600 transform hover:scale-105"
+                 [class.bg-gradient-to-r]="activeSection === 'howwework'"
+                 [class.from-blue-50]="activeSection === 'howwework'"
+                 [class.to-indigo-50]="activeSection === 'howwework'"
+                 [class.text-blue-600]="activeSection === 'howwework'"
+                 [class.shadow-lg]="activeSection === 'howwework'"
+                 (click)="setActiveSection('howwework')">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 rounded-full mr-4 transition-all duration-300"
+                       [ngClass]="{
+                         'bg-blue-500': activeSection === 'howwework',
+                         'bg-gray-300 group-hover:bg-blue-400': activeSection !== 'howwework'
+                       }"></div>
+                  <span>How We Work</span>
+                </div>
+                <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </a>
+
+              <a href="#contact"
+                 class="group flex items-center px-4 py-4 rounded-xl text-white font-semibold text-lg transition-all duration-300 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 shadow-lg hover:shadow-xl transform hover:scale-105"
+                 (click)="setActiveSection('contact')">
+                <div class="flex items-center">
+                  <div class="w-2 h-2 rounded-full bg-white mr-4"></div>
+                  <span>Contact Us</span>
+                </div>
+                <div class="ml-auto opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+                  </svg>
+                </div>
+              </a>
+            </nav>
+
+            <!-- Menu Footer -->
+            <div class="absolute bottom-6 left-6 right-6">
+              <div class="text-center text-sm text-gray-500">
+                <p>© {{currentYear}} Hashfinity Labs</p>
+                <p class="mt-1">Innovative Solutions</p>
+              </div>
+            </div>
+          </div>
+        </div>
   <!-- Main content without padding -->
   <main>
     <!-- Home Section -->
