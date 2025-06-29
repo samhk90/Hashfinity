@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, OnDestroy } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { ThemeService } from './services/theme.service';
 import { CommonModule } from '@angular/common';
@@ -42,7 +42,7 @@ import { ProjectsComponent } from './projects/projects.component';
     ])
   ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnDestroy {
   private observer: IntersectionObserver | null = null;
   private observedElements: Set<Element> = new Set();
   title = 'hashfinity';
@@ -60,6 +60,13 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.checkScroll();
+    this.setupIntersectionObserver();
+  }
+
+  ngOnDestroy() {
+    if (this.observer) {
+      this.observer.disconnect();
+    }
   }
 
   @HostListener('window:scroll', [])
@@ -67,9 +74,48 @@ export class AppComponent implements OnInit {
     this.isScrolled = window.scrollY > 20;
   }
 
+  private setupIntersectionObserver() {
+    const options = {
+      root: null,
+      rootMargin: '-20% 0px -60% 0px', // Trigger when section is 20% from top
+      threshold: 0.1
+    };
+
+    this.observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const sectionId = entry.target.id;
+          if (this.sections.includes(sectionId)) {
+            this.activeSection = sectionId;
+          }
+        }
+      });
+    }, options);
+
+    // Wait for DOM to be ready, then observe sections
+    setTimeout(() => {
+      this.sections.forEach(sectionId => {
+        const element = document.getElementById(sectionId);
+        if (element) {
+          this.observer?.observe(element);
+          this.observedElements.add(element);
+        }
+      });
+    }, 100);
+  }
+
   setActiveSection(section: string) {
     this.activeSection = section;
     this.closeMobileMenu(); // Close mobile menu when navigating
+    
+    // Smooth scroll to section
+    const element = document.getElementById(section);
+    if (element) {
+      element.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
   }
 
   toggleMobileMenu() {

@@ -17,4 +17,14 @@ export class ProjectsComponent implements OnInit {
   ngOnInit(): void {
     this.scrollAnimationService.initScrollAnimation(this.elementRef);
   }
+
+  requestDemo() {
+    const contactSection = document.getElementById('contact');
+    if (contactSection) {
+      contactSection.scrollIntoView({ 
+        behavior: 'smooth', 
+        block: 'start' 
+      });
+    }
+  }
 }
