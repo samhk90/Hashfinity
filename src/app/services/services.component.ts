@@ -41,7 +41,7 @@ export class ServicesComponent implements OnInit, AfterViewInit, OnDestroy {
   services: Service[] = [
  
     {
-      id: 'web-app',
+      id: 'website,
       icon: 'laptop-code',
       title: 'Web App',
       description: 'Modern, responsive web applications built with the latest technologies.',
